@@ -1,5 +1,0 @@
-[Global_Params]
-epochs=20
-batch_size=128
-activation='relu'
-optimizer='rmsprop'
