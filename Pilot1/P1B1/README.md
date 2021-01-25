@@ -1,14 +1,13 @@
 ## P1B1: Autoencoder Compressed Representation for Gene Expression
 
-**Overview**: Given a sample of gene expression data, build a sparse autoencoder that can compress the expression profile into a low-dimensional vector.
+### Model description:
+P1B1, an autoencoder that can collapse high dimensional expression profiles into low dimensional vectors without much loss of information.
+The proposed network architecture includes encoding layers, dropout layers, bottleneck layer, and decoding layers. At least three hidden layers are required, including one encoding layer, one bottleneck layer, and one decoding layer.
+The model is trained and cross-validated on RNA-seq data from GDC. The sample size is 4,000 (3000 training + 1000 test).
+The full set of expression features contains 60,483 float columns transformed from RNA-seq FPKM-UQ values.
+It is useful for compressing the high dimensional expression profiles into low dimensional vectors.
 
-**Relationship to core problem**: Many molecular assays generate large numbers of features that can lead to time-consuming processing and over-fitting in learning tasks; hence, a core capability we intend to build is feature reduction.
-
-**Expected outcome**: Build an autoencoder that collapse high dimensional expression profiles into low dimensional vectors without much loss of information.
-
-### Benchmark Specs Requirements 
-
-#### Description of the Data
+### Description of the Data:
 * Data source: RNA-seq data from GDC 
 * Input dimensions: 60,484 floats; log(1+x) transformed FPKM-UQ values
 * Output dimensions: Same as input
@@ -16,62 +15,89 @@
 * Sample size: 4,000 (3000 training + 1000 test)
 * Notes on data balance and other issues: unlabeled data draw from a diverse set of cancer types
 
-#### Expected Outcomes
-* Reconstructed expression profiles
-* Output range: float; same as log transformed input
+### Setup:
+To setup the python environment needed to train and run this model, first make sure you install [conda](https://docs.conda.io/en/latest/) package manager, clone this repository, then create the environment as shown below.
 
-#### Evaluation Metrics
-* Accuracy or loss function: mean squared error
-* Expected performance of a naïve method: landmark genes picked by linear regression 
-
-#### Description of the Network
-* Proposed network architecture: MLP with encoding layers, dropout layers, bottleneck layer, and decoding layers
-* Number of layers: At least three hidden layers including one encoding layer, one bottleneck layer, and one decoding layer
-
+```bash
+   conda env create -f environment.yml -n P1B1
+   conda activate P1B1
+   ```
 ### Running the baseline implementation
+
+The script [p1b1_baseline_keras2.py](p1b1_baseline_keras2.py) does the following:
+* Reads the model configuration parameters from [p1b1_default_model.txt](p1b1_default_model.txt)
+* Downloads the training data and splits it to training/validation sets
+* Creates and trains the keras model
+* Saves the best trained model based on the validation accuracy
+* Evaluates the best model on the test dataset
 
 ```
 cd Pilot1/P1B1
 python p1b1_baseline_keras2.py
 ```
-The training and test data files will be downloaded the first time this is run and will be cached for future runs. The baseline implementation supports three types of autoencoders controlled by the `--model` parameter: regular autoencoder (`ae`), variational autoencoder (`vae`), and conditional variational autoencoder (`cvae`).
+The baseline implementation supports three types of autoencoders controlled by the `--model` parameter: regular autoencoder (`ae`), variational autoencoder (`vae`), and conditional variational autoencoder (`cvae`).
 
 #### Example output
 ```
-Using Theano backend.
-Using gpu device 0: Tesla K80 (CNMeM is enabled with initial size: 95.0% of memory, cuDNN 5004)
-____________________________________________________________________________________________________
-Layer (type)                     Output Shape          Param #     Connected to
-====================================================================================================
-input_1 (InputLayer)             (None, 60483)         0
-____________________________________________________________________________________________________
-dense_1 (Dense)                  (None, 2000)          120968000   input_1[0][0]
-____________________________________________________________________________________________________
-dense_2 (Dense)                  (None, 600)           1200600     dense_1[0][0]
-____________________________________________________________________________________________________
-dense_3 (Dense)                  (None, 2000)          1202000     dense_2[0][0]
-____________________________________________________________________________________________________
-dense_4 (Dense)                  (None, 60483)         121026483   dense_3[0][0]
-====================================================================================================
-Total params: 244397083
-____________________________________________________________________________________________________
+Using TensorFlow backend.
+
+Shape x_train: (2700, 60483)
+Shape x_val:   (300, 60483)
+Shape x_test:  (1000, 60483)
+Range x_train: [0, 1]
+Range x_val:   [0, 1]
+Range x_test:  [0, 1]
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         (None, 60483)             0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 2000)              120968000 
+_________________________________________________________________
+dense_2 (Dense)              (None, 600)               1200600   
+_________________________________________________________________
+dense_3 (Dense)              (None, 2)                 1202      
+_________________________________________________________________
+model_2 (Model)              (None, 60483)             122230283 
+=================================================================
+Total params: 244,400,085
+Trainable params: 244,400,085
+Non-trainable params: 0
+_________________________________________________________________
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_3 (InputLayer)         (None, 2)                 0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 600)               1800      
+_________________________________________________________________
+dense_5 (Dense)              (None, 2000)              1202000   
+_________________________________________________________________
+dense_6 (Dense)              (None, 60483)             121026483 
+=================================================================
+Total params: 122,230,283
+Trainable params: 122,230,283
+Non-trainable params: 0
+_________________________________________________________________
 None
-Train on 2400 samples, validate on 600 samples
-Epoch 1/2
-2400/2400 [==============================] - 8s - loss: 0.0420 - val_loss: 0.0383
-Epoch 2/2
-2400/2400 [==============================] - 8s - loss: 0.0376 - val_loss: 0.0377
+Train on 2700 samples, validate on 300 samples
+
+Epoch 99/100
+ - 13s - loss: 0.0382 - xent: 0.4579 - corr: 0.7867 - val_loss: 0.0466 - val_xent: 0.4815 - val_corr: 0.7418
+Current time ....1283.445
+Epoch 100/100
+ - 13s - loss: 0.0382 - xent: 0.4579 - corr: 0.7867 - val_loss: 0.0466 - val_xent: 0.4812 - val_corr: 0.7420
+Current time ....1296.327
 ```
 
 ### Preliminary performance
 
 The current best performance in terms of validation correlation for the three types of autoencoders are as follows:
 
-* AE: 0.96
-* VAE: 0.86
-* CVAE: 0.89
+* AE: 0.74
+* VAE: 0.77
+* CVAE: 0.77
 
-Here is an visual example of the 2D latent representation from VAE color coded by cancer types.
+Here is a visual example of the 2D latent representation from VAE.
 
-![VAE latent representation](https://raw.githubusercontent.com/ECP-CANDLE/Benchmarks/frameworks/Pilot1/P1B1/images/VAE-latent-2D.png)
-
+![VAE latent representation](https://github.com/Hokiee/NCI-DOE-Collab-Pilot1-P1B1/blob/main/Pilot1/P1B1/images/VAE-latent-2D.tiff)
