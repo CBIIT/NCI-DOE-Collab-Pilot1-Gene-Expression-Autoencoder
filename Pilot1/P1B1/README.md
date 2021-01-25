@@ -100,4 +100,4 @@ The current best performance in terms of validation correlation for the three ty
 
 Here is a visual example of the 2D latent representation from VAE.
 
-![VAE latent representation](https://github.com/Hokiee/NCI-DOE-Collab-Pilot1-P1B1/blob/main/Pilot1/P1B1/images/VAE-latent-2D.tiff)
+![VAE latent representation](https://github.com/Hokiee/NCI-DOE-Collab-Pilot1-Autoencoder/blob/master/Pilot1/P1B1/images/VAE-latent-2D.tiff)
