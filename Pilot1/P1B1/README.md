@@ -32,10 +32,9 @@ The script [p1b1_baseline_keras2.py](p1b1_baseline_keras2.py) does the following
 * Evaluates the best model on the test dataset
 * Creates the 2D latent representation of encoded data
 
-```
-cd Pilot1/P1B1
-python p1b1_baseline_keras2.py --cp TRUE --save_path p1b1 --model vae
-```
+```cd Pilot1/P1B1
+   python p1b1_baseline_keras2.py --cp TRUE --save_path p1b1 --model vae
+   ```
 The baseline implementation supports three types of autoencoders controlled by the `--model` parameter: regular autoencoder (`ae`), variational autoencoder (`vae`), and conditional variational autoencoder (`cvae`).
 
 #### Example output
