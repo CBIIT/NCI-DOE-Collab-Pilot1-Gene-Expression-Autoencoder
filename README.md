@@ -1,4 +1,4 @@
-# NCI-DOE-Collab-Pilot1-Autoencoder
+# NCI-DOE-Collab-Pilot1-Gene_Expression_Autoencoder
 
 ### Description:
 The Feature Reduction capability (P1B1) shows how to build a sparse autoencoder that can compress a high dimensional expression profile into a low-dimensional vector.
