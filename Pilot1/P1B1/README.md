@@ -112,7 +112,7 @@ To test the trained model in inference, the script [p1b1_infer.py](p1b1_infer.py
 
 
 ```bash
-   python p1b1_infer.py --model vae
+   python p1b1_infer.py --model vae --model_name p1b1
    ```
 #### Example output
 ```
