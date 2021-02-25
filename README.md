@@ -4,19 +4,25 @@
 The Feature Reduction capability (P1B1) shows how to build a sparse autoencoder that can compress a high dimensional expression profile into a low-dimensional vector.
 
 ### User Community:	
-Researchers interested in feature reduction; machine learning; deep learning.
-
+Primary: Cancer biology data modeling</br>
+Secondary: Machine Learning; Bioinformatics; Computational Biology
 
 ### Usability:	
-The provided untrained model can be used by a data scientist to be trained on their own data. The provided scripts use data that have been downloaded and normalized from GDC.
+The current code makes heavy use of CANDLE APIs. It can be used by a data scientist experienced in python and the domain.
 
 ### Uniqueness:	
-Many molecular assays generate large numbers of features that can lead to time-consuming processing and over-fitting in learning tasks; hence, a core capability we intend to build is feature reduction.
+Autoencoder are not the only method for dimensionality reduction. Other techniques like principal component analysis, tSNE, or UMAP are popular for molecular data. For high dimensional input vectors auto encoder can be beneficial, but this needs to be investigated.
 
 ### Components:	
-* Processed training and test data
-* Untrained neural network model
-* Trained model weights and topology
+Untrained model: 
+* Untrained neural network model is defined in [p1b1.model.json](https://modac.cancer.gov/searchTab?dme_data_id=).
+
+Data:
+* Processed training and test data in [MoDaC](https://modac.cancer.gov/searchTab?dme_data_id=).
+
+Trained Model:
+* Trained model is defined by combining the untrained model + model weights.
+* Trained model weights are used in inference [p1b1.model.h5](https://modac.cancer.gov/searchTab?dme_data_id=).
 
 ### Technical Details:
 Please refer to this [README](./Pilot1/P1B1/README.md)
