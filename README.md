@@ -3,15 +3,16 @@
 ### Description:
 The Feature Reduction capability (P1B1) shows how to build a sparse autoencoder that can compress a high dimensional expression profile into a low-dimensional vector.
 
-### User Community:	
-Primary: Cancer biology data modeling</br>
-Secondary: Machine Learning; Bioinformatics; Computational Biology
+### User Community:
+Researchers interested in the following topics:
+* Primary: Cancer biology data modeling
+* Secondary: Machine Learning; Bioinformatics; Computational Biology
 
 ### Usability:	
 The current code makes heavy use of CANDLE APIs. It can be used by a data scientist experienced in python and the domain.
 
 ### Uniqueness:	
-Autoencoder are not the only method for dimensionality reduction. Other techniques like principal component analysis, tSNE, or UMAP are popular for molecular data. For high dimensional input vectors auto encoder can be beneficial, but this needs to be investigated.
+Autoencoder are not the only method for dimensionality reduction. Other techniques like principal component analysis, t-distributed Stochastic Neighbor Embedding tSNE, and Uniform Manifold Approximation and Projection (UMAP) are popular for molecular data. For high dimensional input vectors auto encoder can be beneficial, but this needs to be investigated.
 
 ### Components:	
 Untrained model: 
