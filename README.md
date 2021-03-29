@@ -1,7 +1,7 @@
 # NCI-DOE-Collab-Pilot1-Gene_Expression_Autoencoder
 
 ### Description:
-The Gene Expression Autoencoder capability (P1B1) shows how to build a sparse autoencoder that can compress a high dimensional expression profile into a low-dimensional vector.
+The Gene Expression Autoencoder capability (Pilot 1 Benchmark 1, also known as P1B1) shows how to build a sparse autoencoder that can compress a high dimensional expression profile into a low-dimensional vector.
 
 ### User Community:
 Researchers interested in the following topics:
@@ -12,7 +12,7 @@ Researchers interested in the following topics:
 The current code makes heavy use of CANDLE APIs. It can be used by a data scientist experienced in python and the domain.
 
 ### Uniqueness:	
-Autoencoder are not the only method for dimensionality reduction. Other techniques like principal component analysis, t-distributed Stochastic Neighbor Embedding tSNE, and Uniform Manifold Approximation and Projection (UMAP) are popular for molecular data. For high dimensional input vectors auto encoder can be beneficial, but this needs to be investigated.
+Autoencoder are not the only method for dimensionality reduction. Other techniques like principal component analysis, t-distributed Stochastic Neighbor Embedding (tSNE), and Uniform Manifold Approximation and Projection (UMAP) are popular for molecular data. For high dimensional input vectors auto encoder can be beneficial, but this needs to be investigated.
 
 ### Components:	
 Untrained model: 
@@ -26,4 +26,4 @@ Trained Model:
 * Trained model weights are used in inference [p1b1.model.h5](https://modac.cancer.gov/searchTab?dme_data_id=).
 
 ### Technical Details:
-Please refer to this [README](./Pilot1/P1B1/README.md)
+Refer to this [README](./Pilot1/P1B1/README.md)
