@@ -34,7 +34,7 @@ To download the processed data needed to train and test the model, and the train
 To train the model from scratch, execute the script [p1b1_baseline_keras2.py](p1b1_baseline_keras2.py), as follows:
 
 ```cd Pilot1/P1B1
-   python p1b1_baseline_keras2.py --cp TRUE --save_path p1b1 --model vae
+   python p1b1_baseline_keras2.py --cp TRUE --save_path p1b1 --model vae --latent_dim 100
    ```
 
 The script  does the following:
