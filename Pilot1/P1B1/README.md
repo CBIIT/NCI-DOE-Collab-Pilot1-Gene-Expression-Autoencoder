@@ -42,8 +42,6 @@ The script  does the following:
 * Downloads the training data and splits it to training/validation sets
 * Creates and trains the keras model
 * Saves the best trained model based on the model performance on the validation dataset
-* Evaluates the best model on the test dataset
-* Creates the 2D latent representation of encoded data
 
 The first time you run the script, it downloads the training and test data files. Then it caches the files for future runs.
 
@@ -128,6 +126,8 @@ This script does the following:
 * Downloads the processed test dataset from MoDaC with the corresponding labels.
 * Learns a representation for the test dataset
 * Reports the performance of the model on the test dataset, including mse, r2_score, and correlation
+* Creates the 2D latent representation of encoded test dataset
+
 #### Example output
 ```
 Evaluation on test data: {'mse': 0.03219663, 'r2_score': 0.18068748776161042, 'correlation': 0.8252006683040468}
