@@ -105,13 +105,9 @@ Current time ....1296.327
 
 The current best performance in terms of validation correlation for the three types of autoencoders are as follows:
 
-* AE: 0.74
+* AE: 0.78
 * VAE: 0.77
 * CVAE: 0.77
-
-Here is a visual example of the 2D latent representation from VAE.
-
-![VAE latent representation](https://github.com/Hokiee/NCI-DOE-Collab-Pilot1-Gene_Expression_Autoencoder/blob/master/Pilot1/P1B1/images/p1b1.keras.vae.D1%3D2000.D2%3D600.A%3Drelu.B%3D100.E%3D100.L%3D2.LR%3DNone.S%3Dminmax.latent.png)
 
 ### Inference
 
@@ -133,3 +129,5 @@ This script does the following:
 Evaluation on test data: {'mse': 0.03219663, 'r2_score': 0.18068748776161042, 'correlation': 0.8252006683040468}
 
 ```
+Here is a visual example of the 2D latent representation from VAE.
+![VAE latent representation](https://github.com/Hokiee/NCI-DOE-Collab-Pilot1-Gene_Expression_Autoencoder/blob/master/Pilot1/P1B1/images/p1b1.keras.vae.D1%3D2000.D2%3D600.A%3Drelu.B%3D100.E%3D100.L%3D2.LR%3DNone.S%3Dminmax.latent.png)
