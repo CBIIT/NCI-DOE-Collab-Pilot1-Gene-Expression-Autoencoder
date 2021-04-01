@@ -23,7 +23,7 @@ Data:
 
 Trained Model:
 * Trained model is defined by combining the untrained model + model weights.
-* Trained model weights [p1b1.ae.weights.h5](https://modac.cancer.gov/searchTab?dme_data_id=), [p1b1.vae.weights.h5](https://modac.cancer.gov/searchTab?dme_data_id=), and p1b1.cvae.weights.h5](https://modac.cancer.gov/searchTab?dme_data_id=) are used in inference.
+* Trained model weights [p1b1.ae.weights.h5](https://modac.cancer.gov/searchTab?dme_data_id=), [p1b1.vae.weights.h5](https://modac.cancer.gov/searchTab?dme_data_id=), and [p1b1.cvae.weights.h5](https://modac.cancer.gov/searchTab?dme_data_id=) are used in inference.
 
 ### Technical Details:
 Refer to this [README](./Pilot1/P1B1/README.md).
