@@ -9,9 +9,9 @@ Researchers interested in the following topics:
 * Secondary: Machine Learning; Bioinformatics; Computational Biology
 
 ### Usability:	
-The current code makes heavy use of CANDLE APIs. It can be used by a data scientist experienced in Python and the domain. 
+The current code makes heavy use of CANcer Distributed Learning Environment (CANDLE) APIs. It can be used by a data scientist experienced in Python and the domain. 
 
-&#x1F534;_**(Question: Does the audience already know what CANDLE stands for?)**_ 
+&#x1F534;_**(Question: Does the audience already know what CANDLE stands for?)**_ Maybe not.
 
 ### Uniqueness:	
 Autoencoders are not the only method for dimensionality reduction. Other techniques like principal component analysis, t-distributed stochastic neighbor embedding (tSNE), and uniform manifold approximation and projection (UMAP) are popular for molecular data. For high-dimensional input vectors, autoencoders can be beneficial, but this needs to be investigated.
@@ -22,7 +22,7 @@ The following components are in the [Gene Expression Autoencoder](https://modac.
 * Untrained model: 
   * The untrained autoencoders are defined in the model topology files: p1b1.ae.model.json, p1b1.vae.model.json, and p1b1.cvae.model.json.
 * Data:
-  * The processed training and test data are in MoDaC. &#x1F534;_**(Question: In the same dataset as the model and the trained model? What are the filenames?)**_
+  * The processed training (P1B1.train.csv) and test (P1B1.test.csv) data are in MoDaC. &#x1F534;_**(Question: In the same dataset as the model and the trained model? What are the filenames?)**_ The data files will be in the same asset as model files in MoDaC. 
 * Trained Model:
   * The trained model is defined by combining the untrained model and model weights.
   * The trained model weights are used in inference: p1b1.ae.weights.h5, p1b1.vae.weights.h5, and p1b1.cvae.weights.h5.
