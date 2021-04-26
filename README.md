@@ -15,8 +15,7 @@ The current code makes heavy use of CANcer Distributed Learning Environment (CAN
 Autoencoders are not the only method for dimensionality reduction. Other techniques like principal component analysis, t-distributed stochastic neighbor embedding (tSNE), and uniform manifold approximation and projection (UMAP) are popular for molecular data. For high-dimensional input vectors, autoencoders can be beneficial, but this needs to be investigated.
 
 ### Components:	
-The following components are in the [Gene Expression Autoencoder](https://modac.cancer.gov/searchTab?dme_data_id=) dataset in the Model and Data Clearinghouse (MoDaC):
-&#x1F534;_**(Link TBD)**_
+The following components are in the [Gene Expression Autoencoder](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-7648032) dataset in the Model and Data Clearinghouse (MoDaC):
 * Untrained model: 
   * The untrained autoencoders are defined in the model topology files: p1b1.ae.model.json, p1b1.vae.model.json, and p1b1.cvae.model.json.
 * Processed Data:
