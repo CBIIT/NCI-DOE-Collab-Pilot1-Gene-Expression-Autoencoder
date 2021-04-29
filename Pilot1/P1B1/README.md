@@ -118,7 +118,7 @@ To test the trained model in inference, execute the script [p1b1_infer.py](p1b1_
    ```
    
 This script does the following:
-* Loads the trained model from the working directory.
+* Downloads the trained model from MoDaC.
 * Downloads the processed test dataset from MoDaC with the corresponding labels.
 * Learns a representation for the test dataset.
 * Reports the performance of the model on the test dataset, including mse, r2_score, and correlation.
