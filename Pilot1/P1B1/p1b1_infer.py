@@ -273,13 +273,21 @@ def run(params):
     model_name = params['model_name']
 
     # load json and create model
-    json_file = open('{}.{}.model.json'.format(model_name,params['model']), 'r')
+    trained_model_json = '{}.{}.model.json'.format(model_name,params['model'])
+    json_data_url = gParameters['data_url'] + trained_model_json
+    candle.get_file(trained_model_json, json_data_url, datadir=".")
+    json_file = open(trained_model_json, 'r')
+#     json_file = open('{}.{}.model.json'.format(model_name,params['model']), 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model_json = model_from_json(loaded_model_json)
 
     # load weights into new model
-    loaded_model_json.load_weights('{}.{}.weights.h5'.format(model_name,params['model']))
+    trained_model_h5 = '{}.{}.weights.h5'.format(model_name,params['model'])
+    h5_data_url = gParameters['data_url'] + trained_model_h5
+    candle.get_file(trained_model_h5, h5_data_url, datadir=".")
+    loaded_model_json.load_weights(trained_model_h5)
+#     loaded_model_json.load_weights('{}.{}.weights.h5'.format(model_name,params['model']))
     print("Loaded model from disk")
 
     # evaluate loaded model on test data
