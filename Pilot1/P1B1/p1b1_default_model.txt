@@ -1,7 +1,7 @@
 [Global_Params]
-data_url = 'http://ftp.mcs.anl.gov/pub/candle/public/benchmarks/P1B1/'
-train_data = 'P1B1.dev.train.csv'
-test_data = 'P1B1.dev.test.csv'
+data_url = 'https://modac.cancer.gov/api/v2/dataObject/NCI_DOE_Archive/JDACS4C/JDACS4C_Pilot_1/gene_expression_autoencoder_p1b1/'
+train_data = 'P1B1.train.csv'
+test_data = 'P1B1.test.csv'
 model_name='p1b1'
 dense=[2000, 600]
 batch_size=100

@@ -11,6 +11,7 @@ from six.moves.urllib.error import URLError, HTTPError
 
 import requests
 from generic_utils import Progbar
+from modac_utils import get_file_from_modac
 
 
 # Under Python 2, 'urlretrieve' relies on FancyURLopener from legacy
@@ -40,9 +41,9 @@ else:
 
 
 def get_file(fname, origin, untar=False,
-             #md5_hash=None, datadir='../Data/common'):
-             #md5_hash=None, cache_subdir='common', datadir='../Data/common'):
-             md5_hash=None, cache_subdir='common', datadir=None): # datadir argument was never actually used so changing it to None
+             # md5_hash=None, datadir='../Data/common'):
+             # md5_hash=None, cache_subdir='common', datadir='../Data/common'):
+             md5_hash=None, cache_subdir='common', datadir=None):  # datadir argument was never actually used so changing it to None
     """ Downloads a file from a URL if it not already in the cache.
         Passing the MD5 hash will verify the file after download as well
         as if it is already present in the cache.
@@ -75,7 +76,7 @@ def get_file(fname, origin, untar=False,
     if not os.path.exists(datadir):
         os.makedirs(datadir)
 
-    #if untar:
+    # if untar:
     #    fnamesplit = fname.split('.tar.gz')
     #    untar_fpath = os.path.join(datadir, fnamesplit[0])
 
@@ -112,31 +113,35 @@ def get_file(fname, origin, untar=False,
     '''
 
     if download:
-        print('Downloading data from', origin)
-        global progbar
-        progbar = None
-
-        def dl_progress(count, block_size, total_size):
+        if 'modac.cancer.gov' in origin:
+            get_file_from_modac(fpath, origin)
+        else:
+            print('Downloading data from', origin)
             global progbar
-            if progbar is None:
-                progbar = Progbar(total_size)
-            else:
-                progbar.update(count * block_size)
+            progbar = None
 
-        error_msg = 'URL fetch failure on {}: {} -- {}'
-        try:
+            def dl_progress(count, block_size, total_size):
+                global progbar
+                if progbar is None:
+                    progbar = Progbar(total_size)
+                else:
+                    progbar.update(count * block_size)
+
+            error_msg = 'URL fetch failure on {}: {} -- {}'
             try:
-                urlretrieve(origin, fpath, dl_progress)
-            except URLError as e:
-                raise Exception(error_msg.format(origin, e.errno, e.reason))
-            except HTTPError as e:
-                raise Exception(error_msg.format(origin, e.code, e.msg))
-        except (Exception, KeyboardInterrupt) as e:
-            if os.path.exists(fpath):
-                os.remove(fpath)
-            raise
-        progbar = None
-        print()
+                try:
+                    urlretrieve(origin, fpath, dl_progress)
+                    # fpath = wget.download(origin)
+                except URLError as e:
+                    raise Exception(error_msg.format(origin, e.errno, e.reason))
+                except HTTPError as e:
+                    raise Exception(error_msg.format(origin, e.code, e.msg))
+            except (Exception, KeyboardInterrupt) as e:
+                if os.path.exists(fpath):
+                    os.remove(fpath)
+                raise
+            progbar = None
+            print()
 
     if untar:
         if not os.path.exists(untar_fpath):

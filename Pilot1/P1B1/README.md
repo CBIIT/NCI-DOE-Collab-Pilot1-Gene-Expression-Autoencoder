@@ -1,12 +1,12 @@
-### Model description
-The Gene Expression Autoencoder capability (Pilot 1 Benchmark 1, also known as P1B1) is an autoencoder that can collapse high dimensional expression profiles into low dimensional vectors without much loss of information. The proposed network architecture includes encoding layers, dropout layers, bottleneck layer, and decoding layers. At least three hidden layers are required, including one encoding layer, one bottleneck layer, and one decoding layer. It is useful for compressing the high dimensional expression profiles into low dimensional vectors.
+### Model Description
+The Gene Expression Autoencoder capability (Pilot 1 Benchmark 1, also known as P1B1) is an autoencoder that can collapse high-dimensional expression profiles into low-dimensional vectors without much loss of information. The proposed network architecture includes encoding layers, dropout layers, bottleneck layer, and decoding layers. At least three hidden layers are required, including one encoding layer, one bottleneck layer, and one decoding layer. It is useful for compressing the high dimensional expression profiles into low dimensional vectors.
 
 ### Description of the Data
 * Data source: RNA-seq data from GDC 
 * Input dimensions: 60,484 floats; log(1+x) transformed FPKM-UQ values
 * Output dimensions: Same as input
 * Latent representation dimension: 1000
-* Sample size: 4,000 (3000 training + 1000 test)
+* Sample size: 4,000 samples (3000 training + 1000 test)
 * Notes on data balance and other issues: unlabeled data draw from a diverse set of cancer types
 
 ### Expected Outcomes
@@ -14,7 +14,7 @@ The Gene Expression Autoencoder capability (Pilot 1 Benchmark 1, also known as P
 * Output range: float; same as log transformed input
 
 ### Setup
-To setup the python environment needed to train and run this model:
+To set up the Python environment needed to train and run this model:
 1. Install [conda](https://docs.conda.io/en/latest/) package manager.
 2. Clone this repository.
 3. Create the environment as shown below.
@@ -38,16 +38,16 @@ To train the model from scratch, execute the script [p1b1_baseline_keras2.py](p1
    ```
 
 The script  does the following:
-* Reads the model configuration parameters from [p1b1_default_model.txt](p1b1_default_model.txt)
-* Downloads the training data and splits it to training/validation sets
-* Creates and trains the keras model
-* Saves the best trained model based on the model performance on the validation dataset
+* Reads the model configuration parameters from [p1b1_default_model.txt](p1b1_default_model.txt).
+* Downloads the training data and splits it to training/validation sets.
+* Creates and trains the Keras model.
+* Saves the best-trained model based on the model performance on the validation dataset.
 
 The first time you run the script, it downloads the training and test data files. Then it caches the files for future runs.
 
 The baseline implementation supports three types of autoencoders controlled by the `--model` parameter: regular autoencoder (`ae`), variational autoencoder (`vae`), and conditional variational autoencoder (`cvae`).
 
-#### Example output of variational autoencoder (VAE)
+#### Example Output of Variational Autoencoder (VAE)
 
 ```
 Using TensorFlow backend.
@@ -101,7 +101,7 @@ Epoch 100/100
 Current time ....1296.327
 ```
 
-### Preliminary performance
+### Preliminary Performance
 
 The current best performance in terms of validation correlation for the three types of autoencoders are as follows:
 
@@ -118,13 +118,13 @@ To test the trained model in inference, execute the script [p1b1_infer.py](p1b1_
    ```
    
 This script does the following:
-* Loads the trained model from the working directory
+* Downloads the trained model from MoDaC.
 * Downloads the processed test dataset from MoDaC with the corresponding labels.
-* Learns a representation for the test dataset
-* Reports the performance of the model on the test dataset, including mse, r2_score, and correlation
-* Creates the 2D latent representation of encoded test dataset
+* Learns a representation for the test dataset.
+* Reports the performance of the model on the test dataset, including mse, r2_score, and correlation.
+* Creates the 2D latent representation of encoded test dataset.
 
-#### Example output
+#### Example Output
 ```
 Evaluation on test data: {'mse': 0.03219663, 'r2_score': 0.18068748776161042, 'correlation': 0.8252006683040468}
 
