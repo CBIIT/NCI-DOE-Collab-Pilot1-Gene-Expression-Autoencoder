@@ -274,7 +274,7 @@ def run(params):
 
     # load json and create model
     trained_model_json = '{}.{}.model.json'.format(model_name,params['model'])
-    json_data_url = gParameters['data_url'] + trained_model_json
+    json_data_url = params['data_url'] + trained_model_json
     candle.get_file(trained_model_json, json_data_url, datadir=".")
     json_file = open(trained_model_json, 'r')
 #     json_file = open('{}.{}.model.json'.format(model_name,params['model']), 'r')
@@ -284,7 +284,7 @@ def run(params):
 
     # load weights into new model
     trained_model_h5 = '{}.{}.weights.h5'.format(model_name,params['model'])
-    h5_data_url = gParameters['data_url'] + trained_model_h5
+    h5_data_url = params['data_url'] + trained_model_h5
     candle.get_file(trained_model_h5, h5_data_url, datadir=".")
     loaded_model_json.load_weights(trained_model_h5)
 #     loaded_model_json.load_weights('{}.{}.weights.h5'.format(model_name,params['model']))
@@ -299,7 +299,7 @@ def run(params):
 
     # load encoder
     encoder_h5 = '{}.{}.encoder.h5'.format(model_name,params['model'])
-    h5_encoder_url = gParameters['data_url'] + encoder_h5
+    h5_encoder_url = params['data_url'] + encoder_h5
     candle.get_file(encoder_h5, h5_encoder_url, datadir=".")
     encoder = load_model(encoder_h5)
 #     encoder = load_model('{}.{}.encoder.h5'.format(model_name,params['model']))
