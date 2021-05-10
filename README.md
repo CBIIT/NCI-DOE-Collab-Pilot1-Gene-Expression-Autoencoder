@@ -9,10 +9,10 @@ Researchers interested in the following topics:
 * Secondary: Machine Learning; Bioinformatics; Computational Biology
 
 ### Usability:	
-The current code makes heavy use of CANcer Distributed Learning Environment (CANDLE) APIs. It can be used by a data scientist experienced in Python and the domain. 
+The current code can be used by a data scientist experienced in Python and the domain. 
 
 ### Uniqueness:	
-Autoencoders are not the only method for dimensionality reduction. Other techniques like principal component analysis, t-distributed stochastic neighbor embedding (tSNE), and uniform manifold approximation and projection (UMAP) are popular for molecular data. For high-dimensional input vectors, autoencoders can be beneficial, but this needs to be investigated.
+Autoencoders are not the only method for dimensionality reduction. Other techniques like principal component analysis, t-distributed stochastic neighbor embedding (tSNE), and uniform manifold approximation and projection (UMAP) are popular for molecular data. For high-dimensional input vectors, autoencoders can be beneficial.
 
 ### Components:	
 The following components are in the [Gene Expression Autoencoder](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-7648032) dataset in the Model and Data Clearinghouse (MoDaC):
