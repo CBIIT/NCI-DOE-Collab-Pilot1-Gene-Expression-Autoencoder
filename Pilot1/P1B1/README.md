@@ -135,4 +135,4 @@ Evaluation on test data: {'mse': 0.033340786, 'r2_score': 0.15194242634880137, '
 
 ```
 Here is a visual example of the 2D latent representation from VAE.
-![VAE latent representation](https://github.com/Hokiee/NCI-DOE-Collab-Pilot1-Gene_Expression_Autoencoder/blob/master/Pilot1/P1B1/images/p1b1.keras.vae.D1%3D2000.D2%3D600.A%3Drelu.B%3D100.E%3D100.L%3D2.LR%3DNone.S%3Dminmax.latent.png)
+![VAE latent representation](https://github.com/CBIIT/NCI-DOE-Collab-Pilot1-Gene_Expression_Autoencoder/blob/e40dc4eb0e1ab58ef50d0e3a80a265a2ba036c96/Pilot1/P1B1/images/p1b1.vae.latent.png)
