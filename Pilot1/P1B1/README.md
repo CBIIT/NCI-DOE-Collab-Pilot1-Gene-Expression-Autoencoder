@@ -99,11 +99,11 @@ None
 Train on 2700 samples, validate on 300 samples
 
 Epoch 99/100
- - 7s - loss: nan - xent: 0.4575 - corr: 0.7870 - mse: 0.0382 - val_loss: nan - val_xent: 0.4817 - val_corr: 0.7422 - val_mse: 0.0466
-Current time ....751.347
+ - 7s - loss: 0.4513 - xent: 0.4417 - corr: 0.8215 - mse: 0.0327 - val_loss: 0.4764 - val_xent: 0.4666 - val_corr: 0.7703 - val_mse: 0.0423
+Current time ....685.521
 Epoch 100/100
- - 7s - loss: nan - xent: 0.4575 - corr: 0.7870 - mse: 0.0382 - val_loss: nan - val_xent: 0.4818 - val_corr: 0.7420 - val_mse: 0.0466
-Current time ....758.342
+ - 7s - loss: 0.4522 - xent: 0.4420 - corr: 0.8208 - mse: 0.0328 - val_loss: 0.4768 - val_xent: 0.4664 - val_corr: 0.7715 - val_mse: 0.0422
+Current time ....692.382
 ```
 
 ### Preliminary Performance
