@@ -384,12 +384,12 @@ def run(params):
 
     x_test_encoded = encoder.predict(test_inputs, batch_size=params['batch_size'])
     y_test_classes = np.argmax(y_test, axis=1)
-    candle.plot_scatter(x_test_encoded, y_test_classes, prefix+'.latent')
+    candle.plot_scatter(x_test_encoded, y_test_classes, prefix+'.latent', y_labels)
 
     if params['tsne']:
         tsne = TSNE(n_components=2, random_state=seed)
         x_test_encoded_tsne = tsne.fit_transform(x_test_encoded)
-        candle.plot_scatter(x_test_encoded_tsne, y_test_classes, prefix+'.latent.tsne')
+        candle.plot_scatter(x_test_encoded_tsne, y_test_classes, prefix+'.latent.tsne', y_labels)
 
     # diff = x_pred - x_test
     # plt.hist(diff.ravel(), bins='auto')
