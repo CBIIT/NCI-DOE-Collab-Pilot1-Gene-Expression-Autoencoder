@@ -34,7 +34,7 @@ To download the processed data needed to train and test the model, and the train
 To train the model from scratch, execute the script [p1b1_baseline_keras2.py](p1b1_baseline_keras2.py), as follows:
 
 ```cd Pilot1/P1B1
-   python p1b1_baseline_keras2.py --cp TRUE --save_path p1b1 --model vae --latent_dim 100
+   python p1b1_baseline_keras2.py --cp TRUE --save_path p1b1 --model vae
    ```
 
 The script  does the following:
@@ -67,50 +67,50 @@ dense_1 (Dense)                 (None, 2000)         120968000   input_1[0][0]
 __________________________________________________________________________________________________
 dense_2 (Dense)                 (None, 600)          1200600     dense_1[0][0]                    
 __________________________________________________________________________________________________
-z_mean (Dense)                  (None, 100)          60100       dense_2[0][0]                    
+z_mean (Dense)                  (None, 2)            1202        dense_2[0][0]                    
 __________________________________________________________________________________________________
-z_log_var (Dense)               (None, 100)          60100       dense_2[0][0]                    
+z_log_var (Dense)               (None, 2)            1202        dense_2[0][0]                    
 __________________________________________________________________________________________________
-lambda_1 (Lambda)               (None, 100)          0           z_mean[0][0]                     
+lambda_1 (Lambda)               (None, 2)            0           z_mean[0][0]                     
                                                                  z_log_var[0][0]                  
 __________________________________________________________________________________________________
-model_2 (Model)                 (None, 60483)        122289083   lambda_1[0][0]                   
+model_2 (Model)                 (None, 60483)        122230283   lambda_1[0][0]                   
 ==================================================================================================
-Total params: 244,577,883
-Trainable params: 244,577,883
+Total params: 244,401,287
+Trainable params: 244,401,287
 Non-trainable params: 0
 __________________________________________________________________________________________________
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-input_3 (InputLayer)         (None, 100)               0         
+input_3 (InputLayer)         (None, 2)                 0         
 _________________________________________________________________
-dense_3 (Dense)              (None, 600)               60600     
+dense_3 (Dense)              (None, 600)               1800      
 _________________________________________________________________
 dense_4 (Dense)              (None, 2000)              1202000   
 _________________________________________________________________
 dense_5 (Dense)              (None, 60483)             121026483 
 =================================================================
-Total params: 122,289,083
-Trainable params: 122,289,083
+Total params: 122,230,283
+Trainable params: 122,230,283
 Non-trainable params: 0
 _________________________________________________________________
 None
 Train on 2700 samples, validate on 300 samples
 
 Epoch 99/100
- - 7s - loss: 0.4513 - xent: 0.4417 - corr: 0.8215 - mse: 0.0327 - val_loss: 0.4764 - val_xent: 0.4666 - val_corr: 0.7703 - val_mse: 0.0423
-Current time ....685.521
+ - 7s - loss: 0.4319 - xent: 0.4315 - corr: 0.8419 - mse: 0.0292 - val_loss: 0.4771 - val_xent: 0.4769 - val_corr: 0.7460 - val_mse: 0.0466
+Current time ....677.235
 Epoch 100/100
- - 7s - loss: 0.4522 - xent: 0.4420 - corr: 0.8208 - mse: 0.0328 - val_loss: 0.4768 - val_xent: 0.4664 - val_corr: 0.7715 - val_mse: 0.0422
-Current time ....692.382
+ - 7s - loss: 0.4317 - xent: 0.4314 - corr: 0.8421 - mse: 0.0292 - val_loss: 0.4754 - val_xent: 0.4752 - val_corr: 0.7504 - val_mse: 0.0459
+Current time ....684.103
 ```
 
 ### Preliminary Performance
 
 The current best performance in terms of validation correlation for the three types of autoencoders are as follows:
 
-* AE: 0.78
+* AE: 0.74
 * VAE: 0.77
 * CVAE: 0.77
 
