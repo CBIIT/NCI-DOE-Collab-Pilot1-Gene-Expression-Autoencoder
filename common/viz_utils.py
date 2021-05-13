@@ -19,11 +19,22 @@ def plot_history(out, history, metric='loss', title=None, width=8, height=6):
     plt.savefig(png, bbox_inches='tight')
     plt.close()
 
-def plot_scatter(data, classes, out, width=10, height=8):
+# def plot_scatter(data, classes, out, width=10, height=8):
+#     cmap = plt.cm.get_cmap('gist_rainbow')
+#     plt.figure(figsize=(width, height))
+#     plt.scatter(data[:, 0], data[:, 1], c=classes, cmap=cmap, lw=0.5, edgecolor='black', alpha=0.7)
+#     plt.colorbar()
+#     png = '{}.png'.format(out)
+#     plt.savefig(png, bbox_inches='tight')
+#     plt.close()
+
+def plot_scatter(data, classes, out, y_labels, width=10, height=8):
     cmap = plt.cm.get_cmap('gist_rainbow')
     plt.figure(figsize=(width, height))
     plt.scatter(data[:, 0], data[:, 1], c=classes, cmap=cmap, lw=0.5, edgecolor='black', alpha=0.7)
-    plt.colorbar()
+    cbar = plt.colorbar()
+    cbar.set_ticks(list(range(0, len(y_labels))))
+    cbar.set_ticklabels(y_labels)
     png = '{}.png'.format(out)
     plt.savefig(png, bbox_inches='tight')
     plt.close()
