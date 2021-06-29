@@ -1,4 +1,4 @@
-# NCI-DOE-Collab-Pilot1-Gene_Expression_Autoencoder
+# NCI-DOE-Collab-Pilot1-Gene-Expression-Autoencoder
 
 ### Description:
 The Gene Expression Autoencoder capability (Pilot 1 Benchmark 1, also known as P1B1) shows how to build three types of autoencoders that can compress a high-dimensional expression profile into a low-dimensional vector. The three types of autoencoders include regular autoencoder (ae), variational autoencoder (vae), and conditional variational autoencoder (cvae).
